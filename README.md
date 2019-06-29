@@ -69,14 +69,16 @@ Runtime `terraform apply`:
 | enable_digitalocean | Enable / Disable Digital Ocean | bool | true | yes | Random 6 byte hex suffix for cluster name | string |  | no |
 | random_cluster_suffix | Random 6 byte hex suffix for cluster name | string |  | yes |
 | do_k8s_nodes | Worker nodes | int | 2 | yes |
-| do_k8s_nodepool_size | Nodepool size | 2 | yes |
 | do_token | Digital Ocean Personal access token | string | DUMMY | **yes** |
 | do_region | Digital Ocean region | string | fra1 | yes |
 | do_k8s_name | Digital Ocean Kubernetes cluster name | string | k8s-do | yes |
-| do_k8s_version | Digital Ocean Kubernetes version | string | 1.14.2-do.0 | yes |
-| do_k8s_node_type | Digital Ocean Kubernetes node type | string | s-1vcpu-2gb | yes |
+| do_k8s_pool_name | Digital Ocean Kubernetes default node pool name | string | k8s-nodepool-do | yes |
+| do_k8s_nodes | Digital Ocean Kubernetes default node pool size | int | 1 | yes |
+| do_k8s_node_type | Digital Ocean Kubernetes default node pool type | string | s-1vcpu-2gb | yes |
 | do_k8s_nodepool_type | Digital Ocean Kubernetes additional node pool type | string | s-1vcpu-2gb | yes |
-| do_k8s_pool_name | Digital Ocean Kubernetse node pool name | string | k8s-nodepool-do | yes |
+| do_k8s_nodepool_size | Digital Ocean Kubernetes additional node pool size | 2 | yes |
+
+
 
 
 ## Outputs

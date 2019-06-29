@@ -1,32 +1,41 @@
-resource "digitalocean_kubernetes_cluster" "foo" {
+resource "random_id" "cluster_name" {
+  byte_length = 6
+}
+
+
+data "external" "get_latest_do_k8s_version" {
+  program = ["sh", "${path.module}/get_do_latest_k8s_version.sh"]
+  
+  query = {
+    do_token = var.do_token
+  }
+}
+
+
+resource "digitalocean_kubernetes_cluster" "k8s" {
   count   = var.enable_digitalocean ? 1 : 0
-  name    = "${var.do_k8s_name}-${var.random_cluster_suffix}"
+  name    = "${var.do_k8s_name}-${random_id.cluster_name.hex}"
   region  = var.do_region
-  version = var.do_k8s_version
+  version = data.external.get_latest_do_k8s_version.result["version"]
 
   node_pool {
     name       = var.do_k8s_pool_name
     size       = var.do_k8s_node_type
     node_count = var.do_k8s_nodes
   }
-
-  tags = [
-    "k8s"
-  ]
 }
 
-resource "digitalocean_kubernetes_node_pool" "bar" {
-  count   = var.enable_digitalocean ? 1 : 0
-  cluster_id = "${digitalocean_kubernetes_cluster.foo[count.index].id}"
+resource "digitalocean_kubernetes_node_pool" "k8s_nodes" {
+  count      = var.enable_digitalocean ? 1 : 0
+  cluster_id = digitalocean_kubernetes_cluster.k8s[count.index].id
 
-  name       = "backend-pool"
+  name       = var.do_k8s_nodepool_name
   size       = var.do_k8s_nodepool_type
-  node_count = var.do_k8s_odepool_size
-  tags       = ["backend"]
+  node_count = var.do_k8s_nodepool_size
 }
 
 resource "local_file" "kubeconfigdo" {
   count    = var.enable_digitalocean ? 1 : 0
-  content  = digitalocean_kubernetes_cluster.foo.0.kube_config[0].raw_config
+  content  = digitalocean_kubernetes_cluster.k8s[count.index].kube_config[0].raw_config
   filename = "${path.module}/kubeconfig_do"
 }

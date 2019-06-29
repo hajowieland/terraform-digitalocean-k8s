@@ -7,3 +7,9 @@
 
 # .tfvars files
 *.tfvars
+
+# kubeconfig
+kubeconfig_do
+
+# .pre-commit-terraform
+.pre-commit-config.yaml

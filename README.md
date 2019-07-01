@@ -10,30 +10,31 @@ It uses the latest available Digital Ocean Kubernetes slug version available and
 - [Features](#Features)
 - [Notes](#Notes)
 - [Defaults](#Defaults)
-    - [Terraform Inputs](#Terraform-Inputs)
-  - [Outputs](#Outputs)
+- [Runtime](#Runtime)
+- [Terraform Inputs](#Terraform-Inputs)
+- [Outputs](#Outputs)
 
 
-# Requirements
+## Requirements
 
 You need a [Digital Ocean account](https://m.do.co/c/b40b1325cb18) and a [Personal access token](https://cloud.digitalocean.com/account/api/tokens).
 
 
-# Features
+## Features
 
 * Always uses latest available Kubernetes version on Digital Ocean
 * Kubernetes Cluster with 1 + 2 = *3* worker nodes (default node pool + additional node pool)
 * **kubeconfig** file generation at completion
 
 
-# Notes
+## Notes
 
 * The resources will be created in your default Digital Ocean project
 * If you want to add/remove worker nodes, just edit the `do_k8s_nodepool_size` variable
 * `export KUBECONFIG=./kubeconfig_do` in repo root dir to use the generated kubeconfig file
 * The `enable_digitalocean` is used in the hajowieland/terraform-kubernetes-multi-cloud module
 
-# Defaults
+## Defaults
 
 See tables at the end for a comprehensive list of inputs and outputs.
 
@@ -44,6 +45,8 @@ See tables at the end for a comprehensive list of inputs and outputs.
 * Default main pool size: **1**
 * Default additional node pool size: **2**
 
+
+## Runtime
 
 Runtime `terraform apply`:
 
@@ -62,7 +65,7 @@ Runtime `terraform apply`:
 ```
 
 
-### Terraform Inputs
+## Terraform Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|

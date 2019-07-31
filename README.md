@@ -31,6 +31,7 @@ You need a [Digital Ocean account](https://m.do.co/c/b40b1325cb18) and a [Person
 
 * The resources will be created in your default Digital Ocean project
 * If you want to add/remove worker nodes, just edit the `do_k8s_nodepool_size` variable
+* It can take 2-3 minutes after Terraform completes until the Kubernetes nodes are available
 * `export KUBECONFIG=./kubeconfig_do` in repo root dir to use the generated kubeconfig file
 * The `enable_digitalocean` is used in the hajowieland/terraform-kubernetes-multi-cloud module
 
@@ -76,10 +77,10 @@ Runtime `terraform apply`:
 | do_region | Digital Ocean region | string | fra1 | yes |
 | do_k8s_name | Digital Ocean Kubernetes cluster name | string | k8s-do | yes |
 | do_k8s_pool_name | Digital Ocean Kubernetes default node pool name | string | k8s-nodepool-do | yes |
-| do_k8s_nodes | Digital Ocean Kubernetes default node pool size | int | 1 | yes |
+| do_k8s_nodes | Digital Ocean Kubernetes default node pool size | number | 1 | yes |
 | do_k8s_node_type | Digital Ocean Kubernetes default node pool type | string | s-1vcpu-2gb | yes |
 | do_k8s_nodepool_type | Digital Ocean Kubernetes additional node pool type | string | s-1vcpu-2gb | yes |
-| do_k8s_nodepool_size | Digital Ocean Kubernetes additional node pool size | 2 | yes |
+| do_k8s_nodepool_size | Digital Ocean Kubernetes additional node pool size | number | 2 | yes |
 
 
 

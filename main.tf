@@ -1,22 +1,22 @@
 resource "random_id" "cluster_name" {
+  count       = var.enable_digitalocean ? 1 : 0
   byte_length = 6
 }
 
-
 data "external" "get_latest_do_k8s_version" {
+  count   = var.enable_digitalocean ? 1 : 0
   program = ["sh", "${path.module}/get_do_latest_k8s_version.sh"]
-  
+
   query = {
     do_token = var.do_token
   }
 }
 
-
 resource "digitalocean_kubernetes_cluster" "k8s" {
   count   = var.enable_digitalocean ? 1 : 0
-  name    = "${var.do_k8s_name}-${random_id.cluster_name.hex}"
+  name    = "${var.do_k8s_name}-${random_id.cluster_name[count.index].hex}"
   region  = var.do_region
-  version = data.external.get_latest_do_k8s_version.result["version"]
+  version = data.external.get_latest_do_k8s_version[count.index].result["version"]
 
   node_pool {
     name       = var.do_k8s_pool_name

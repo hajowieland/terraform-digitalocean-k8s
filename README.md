@@ -4,6 +4,10 @@ This repository contains the Terraform module for creating a Kubernetes Cluster 
 
 It uses the latest available Digital Ocean Kubernetes slug version available and creates a kubeconfig file at completion.
 
+<p align="center">
+<img alt="Digital Ocean Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/DigitalOcean_logo.svg/240px-DigitalOcean_logo.svg.png">
+</p>
+
 
 - [Terraform Kubernetes on Digital Ocean](#Terraform-Kubernetes-on-Digital-Ocean)
 - [Requirements](#Requirements)

@@ -4,6 +4,10 @@ This repository contains the Terraform module for creating a Kubernetes Cluster 
 
 It uses the latest available Digital Ocean Kubernetes slug version available and creates a kubeconfig file at completion.
 
+#### Link to my comprehensive blog post (beginner friendly):
+[https://napo.io/posts/terraform-kubernetes-multi-cloud-ack-aks-dok-eks-gke-oke/#digital-ocean](https://napo.io/posts/terraform-kubernetes-multi-cloud-ack-aks-dok-eks-gke-oke/#digital-ocean)
+
+
 <p align="center">
 <img alt="Digital Ocean Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/DigitalOcean_logo.svg/240px-DigitalOcean_logo.svg.png">
 </p>

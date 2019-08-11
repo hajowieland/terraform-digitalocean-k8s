@@ -1,5 +1,6 @@
 variable "enable_digitalocean" {
   description = "Enable / Disable Digital Ocean (e.g. `true`)"
+  type        = bool
   default     = true
 }
 
@@ -12,7 +13,7 @@ variable "random_cluster_suffix" {
 variable "do_token" {
   description = "Digital Ocean Personal access token"
   type        = string
-  default     = "DUMMY"
+  default     = ""
 }
 
 variable "do_region" {
@@ -35,6 +36,7 @@ variable "do_k8s_pool_name" {
 
 variable "do_k8s_nodes" {
   description = "Digital Ocean Kubernetes default node pool size (e.g. `2`)"
+  type        = number
   default     = 1
 }
 
@@ -58,5 +60,6 @@ variable "do_k8s_nodepool_type" {
 
 variable "do_k8s_nodepool_size" {
   description = "Digital Ocean Kubernetes additional node pool size (e.g. `3`)"
+  type        = number
   default     = 2
 }

@@ -74,7 +74,7 @@ Runtime `terraform apply`:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| enable_digitalocean | Enable / Disable Digital Ocean | bool | true | yes | Random 6 byte hex suffix for cluster name | string |  | no |
+| enable_digitalocean | Enable / Disable Digital Ocean | bool | true | yes |
 | random_cluster_suffix | Random 6 byte hex suffix for cluster name | string |  | yes |
 | do_k8s_nodes | Worker nodes | int | 2 | yes |
 | do_token | Digital Ocean Personal access token | string | DUMMY | **yes** |
